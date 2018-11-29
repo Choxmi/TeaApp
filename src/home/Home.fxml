@@ -15,22 +15,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.Controller">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/jimmy-fallon.png" />
+                  <Image url="@../images/logo.png" />
                </image>
                <VBox.margin>
                   <Insets bottom="10.0" top="50.0" />
                </VBox.margin></ImageView>
-            <Label text="Jimmy Fallon" textFill="#e7e5e5">
+            <Label text="දිදුල Tea Transport" textFill="#e7e5e5">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
+            <Button fx:id="btnTransaction" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Transactions">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Open_Envelope_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
             <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -49,18 +61,6 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Orders">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Open_Envelope_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
             <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Customers">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -73,7 +73,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Menus">
+            <Button fx:id="btnPayslips" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Payslips">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,31 +85,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Packages">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Settings">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -121,17 +97,91 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
+            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" disable="true" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Packages" visible="false">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Box_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" disable="true" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Settings" visible="false">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
          </children>
       </VBox>
       <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
+            <Pane fx:id="pnlTransaction" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Label fx:id="txtTrnCusName" layoutX="302.0" layoutY="153.0" text="G.W.C. Sathsara" textAlignment="CENTER" textFill="#ff0043">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="348.0" layoutY="252.0" text="Gross  Weight (Kg)" textFill="WHITE" />
+                  <Label layoutX="334.0" layoutY="349.0" text="Advanced payment (Rs.)" textFill="WHITE" />
+                  <TextField fx:id="txtTrnGrossWeight" alignment="CENTER" layoutX="19.0" layoutY="252.0" prefHeight="73.0" prefWidth="753.0" promptText="Gross Weight" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtTrnAdvance" alignment="CENTER" layoutX="21.0" layoutY="349.0" prefHeight="73.0" prefWidth="753.0" promptText="Advance" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnTrnSave" layoutX="365.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleClicks" text="Save">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="39.0" layoutY="171.0" mnemonicParsing="false" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="56.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow-left.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="690.0" layoutY="162.0" mnemonicParsing="false" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow-right.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label fx:id="txtTrnCusID" layoutX="384.0" layoutY="132.0" text="01" textFill="#00b2ff">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTrnDate" alignment="CENTER" layoutX="296.0" layoutY="54.0" prefHeight="60.0" prefWidth="198.0" promptText="Gross Weight" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="2018/05/12">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+               </children></Pane>
+            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" visible="false">
                <children>
                   <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="57.0" layoutY="25.0" text="Restaurant Orders" textFill="#e7e5e5">
+                  <Label layoutX="55.0" layoutY="36.0" text="A.B.C. Silva" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -140,76 +190,76 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="22000" textFill="#2a73ff">
+                              <Label alignment="CENTER" prefHeight="38.0" prefWidth="142.0" text="50Kg" textFill="#2a73ff">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Total Orders" textFill="#e7e5e5" />
+                              <Label text="Total Kilos" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="1500" textFill="#26bfbc">
+                              <Label alignment="CENTER" prefHeight="38.0" prefWidth="183.0" text="1500" textAlignment="CENTER" textFill="#26bfbc">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Total delivered" textFill="#e7e5e5" />
+                              <Label text="Cash on hand" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="1000" textFill="#fa5f7e">
+                              <Label alignment="CENTER" prefHeight="38.0" prefWidth="146.0" text="1000" textFill="#fa5f7e">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <Label text="Peding Orders" textFill="#e7e5e5" />
+                              <Label text="Cash Given" textFill="#e7e5e5" />
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="170.0">
                            <children>
-                              <Label text="780" textFill="#de0000">
+                              <Button id="btnMonth" fx:id="btnMonth" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
                                  <font>
-                                    <Font name="System Bold" size="26.0" />
+                                    <Font name="System Bold" size="20.0" />
                                  </font>
-                              </Label>
-                              <Label text="Orders on Hold" textFill="#e7e5e5" />
+                              </Button>
+                              <Label text="Month" textFill="#e7e5e5" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="178.0" prefHeight="42.0" prefWidth="712.0" spacing="80.0" style="-fx-background-color: #02030A;">
+                  <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="178.0" prefHeight="42.0" prefWidth="712.0" spacing="80.0" style="-fx-background-color: #02030A;">
                      <children>
-                        <Label text="Company Name" textFill="#e7e5e5">
+                        <Label text="Date" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="Airport" textFill="#e7e5e5">
+                        <Label prefHeight="17.0" prefWidth="88.0" text="Net Weight (Kg)" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Delivery Date" textFill="#e7e5e5">
+                        <Label text="Transport (Rs)" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Amount" textFill="#e7e5e5">
+                        <Label text="Daily Rental (Rs)" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label text="Status" textFill="#e7e5e5">
+                        <Label text="Cash per day" textFill="#e7e5e5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@style.css">
+                  <ScrollPane layoutX="30.0" layoutY="232.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@style.css">
                      <content>
                         <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: #02030A;">
                            <padding>
@@ -218,15 +268,229 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView accessibleRole="BUTTON" fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="55.0" layoutY="19.0" text="CUSTOMER" textFill="WHITE" />
+                  <ScrollPane disable="true" layoutX="593.0" layoutY="78.0" opacity="0.0" prefHeight="253.0" prefWidth="183.0" visible="false">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.0" prefHeight="200.0" prefWidth="200.0" />
+                    </content>
+                  </ScrollPane>
                </children>
             </Pane>
+            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="367.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" style="-fx-radius: 50;">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="387.0" layoutY="160.0" text="NIC" textFill="WHITE" />
+                  <Label layoutX="381.0" layoutY="220.0" text="Name" textFill="WHITE" />
+                  <Label layoutX="367.0" layoutY="281.0" text="Mobile No." textFill="WHITE" />
+                  <Label layoutX="364.0" layoutY="338.0" text="Account No." textFill="WHITE" />
+                  <Label layoutX="375.0" layoutY="398.0" text="Address" textFill="WHITE" />
+                  <TextField fx:id="txtCusNIC" alignment="CENTER" layoutX="199.0" layoutY="153.0" prefHeight="67.0" prefWidth="397.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="933631834V">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtCusName" alignment="CENTER" layoutX="21.0" layoutY="213.0" prefHeight="75.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="G.W. Choxmi Sathsara">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtCusMobile" alignment="CENTER" layoutX="20.0" layoutY="270.0" prefHeight="85.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="0717753438">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtCusAccount" alignment="CENTER" layoutX="20.0" layoutY="338.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="1024000000000000">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtCusAddress" alignment="CENTER" layoutX="21.0" layoutY="398.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="H/18, Punchimadawala,Kithulgala">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="738.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="adder" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="698.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="editor" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnCustSave" layoutX="658.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="saver" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <TextField layoutX="41.0" layoutY="32.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="203.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Search_52px.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            <Pane fx:id="pnlPayslips" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="198.0" mnemonicParsing="false" prefHeight="280.0" prefWidth="72.0" style="-fx-background-color: null;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="56.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow-left.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="713.0" layoutY="198.0" mnemonicParsing="false" prefHeight="280.0" prefWidth="66.0" style="-fx-background-color: null;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow-right.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btnMonth" fx:id="btnMonth" alignment="CENTER" graphicTextGap="22.0" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="374.0" layoutY="58.0" text="Month" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTrnGrossWeight" alignment="CENTER" layoutX="49.0" layoutY="95.0" prefHeight="66.0" prefWidth="161.0" promptText="Price" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="107.0" layoutY="153.0" text="Price/Kg" textFill="WHITE" />
+                  <TextField fx:id="txtTrnGrossWeight1" alignment="CENTER" layoutX="315.0" layoutY="89.0" prefHeight="66.0" prefWidth="161.0" promptText="Transport" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="360.0" layoutY="151.0" text="Transport (%)" textFill="WHITE" />
+                  <TextField fx:id="txtTrnGrossWeight11" alignment="CENTER" layoutX="584.0" layoutY="85.0" prefHeight="66.0" prefWidth="161.0" promptText="Core Leaf" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="630.0" layoutY="143.0" text="Core Leaf/Kg" textFill="WHITE" />
+                  <TextField fx:id="txtTrnGrossWeight2" alignment="CENTER" layoutX="308.0" layoutY="198.0" prefHeight="38.0" prefWidth="161.0" promptText="User ID" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="369.0" layoutY="237.0" text="User ID" textFill="WHITE" />
+                  <Label layoutX="224.0" layoutY="366.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="374.0" text="Cash Hand : " textFill="#ababab" />
+                  <Label layoutX="224.0" layoutY="397.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="405.0" text="poison" textFill="#ababab" />
+                  <Label layoutX="436.0" layoutY="361.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="361.0" layoutY="368.0" text="Dolamite :" textFill="#ababab" />
+                  <Label layoutX="436.0" layoutY="392.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="356.0" layoutY="402.0" text="Tea Packet :" textFill="#ababab" />
+                  <Label layoutX="663.0" layoutY="359.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="597.0" layoutY="368.0" text="Fertilizer : " textFill="#ababab" />
+                  <Label layoutX="663.0" layoutY="390.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="397.0" text="Hinga :" textFill="#ababab" />
+                  <Label layoutX="224.0" layoutY="325.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="333.0" text="Gross amount : " textFill="#ababab" />
+                  <Label layoutX="436.0" layoutY="320.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="360.0" layoutY="329.0" text="Transport :" textFill="#ababab" />
+                  <Label layoutX="663.0" layoutY="318.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="594.0" layoutY="327.0" text="Core Leaf : " textFill="#ababab" />
+                  <Label layoutX="151.0" layoutY="433.0" text="Other Additions" textFill="#ababab" />
+                  <Label layoutX="416.0" layoutY="433.0" text="Other Deductions" textFill="#ababab" />
+                  <TextField fx:id="txtTrnGrossWeight12" alignment="CENTER" layoutX="302.0" layoutY="427.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtTrnGrossWeight121" alignment="CENTER" layoutX="587.0" layoutY="427.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="357.0" layoutY="513.0" text="net amount  (Rs)" textFill="#ababab" />
+                  <TextField fx:id="txtTrnGrossWeight122" alignment="CENTER" layoutX="237.0" layoutY="427.0" prefHeight="30.0" prefWidth="74.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtTrnGrossWeight1211" alignment="CENTER" layoutX="522.0" layoutY="427.0" prefHeight="30.0" prefWidth="69.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="376.0" layoutY="537.0" mnemonicParsing="false" text="Save" />
+                  <Label alignment="CENTER" layoutX="172.0" layoutY="457.0" prefHeight="58.0" prefWidth="457.0" text="25,53000" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="40.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="267.0" prefHeight="27.0" prefWidth="684.0" text="User Name" textFill="#41adff">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </StackPane>
+      <ImageView fitHeight="35.0" fitWidth="24.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+         <image>
+            <Image url="@../images/close.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnClose" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="33.0" style="-fx-background-color: #ffffff; -fx-opacity: 0;" />
    </children>
    <effect>
       <DropShadow color="#1b1eeb" />

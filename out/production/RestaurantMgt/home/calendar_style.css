@@ -1,0 +1,19 @@
+.button
+{
+-fx-background-color : #0a1035;
+-fx-text-fill : #e7e5e5;
+-fx-background-radius : 0;
+}
+.button:hover{
+-fx-background-color : #02030A;
+-fx-font-weight: bold;
+}
+.button:pressed
+{
+-fx-background-color : #08187a;
+-fx-font-weight: bold;
+}
+
+.navigate:hover{
+-fx-font-weight: regular;
+}

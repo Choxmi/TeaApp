@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="424.0" prefWidth="416.0" style="-fx-background-color: #0a1035;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.CalendarController">
+   <children>
+      <VBox fx:id="vboxMonth" layoutX="58.0" layoutY="92.0" prefHeight="298.0" prefWidth="300.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="JANUARY" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-font-style: bold\\\\\;" stylesheets="@calendar_style.css" text="FEBRUARY" textFill="WHITE" userData="02">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="MARCH" textFill="WHITE" userData="03">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="APRIL" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="MAY" textFill="WHITE" userData="05">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="JUNE" textFill="WHITE" userData="06">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="JULY" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="AUGUST" textFill="WHITE" userData="08">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="SEPTEMBER" textFill="WHITE" userData="09">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="OCTOBER" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="NOVEMBER" textFill="WHITE" userData="11">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="DECEMBER" textFill="WHITE" userData="12">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children></VBox>
+      <VBox fx:id="vboxDate" layoutX="58.0" layoutY="92.0" prefHeight="298.0" prefWidth="300.0" visible="false">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="1" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-font-style: bold\\\\\;" stylesheets="@calendar_style.css" text="2" textFill="WHITE" userData="02">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="3" textFill="WHITE" userData="03">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="4" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="5" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="6" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="7" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" style="-fx-background-radius: 0;" stylesheets="@calendar_style.css" text="8" textFill="WHITE" userData="01">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="9" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="10" textFill="WHITE" userData="05">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="11" textFill="WHITE" userData="06">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="12" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="13" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="14" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="15" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="16" textFill="WHITE" userData="04">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="17" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="18" textFill="WHITE" userData="08">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="19" textFill="WHITE" userData="09">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="20" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="21" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="22" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="23" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="24" textFill="WHITE" userData="07">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="25" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="26" textFill="WHITE" userData="11">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="27" textFill="WHITE" userData="12">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="28" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="29" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="30" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" text="31" textFill="WHITE" userData="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button disable="true" mnemonicParsing="false" onAction="#handleMonths" prefHeight="75.0" prefWidth="100.0" stylesheets="@calendar_style.css" textFill="WHITE" userData="10" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane fx:id="paneYear" prefHeight="94.0" prefWidth="416.0">
+         <children>
+            <Label fx:id="lblYear" alignment="CENTER" layoutX="58.0" layoutY="28.0" prefHeight="29.0" prefWidth="300.0" text="2018" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnCalPrev" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="12.0" prefWidth="53.0" style="-fx-background-color: #0a1035;" styleClass="navigate" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCalNxt" layoutX="358.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="12.0" prefWidth="53.0" style="-fx-background-color: #0a1035;" text="&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="20.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Pane fx:id="paneYearMonth" prefHeight="94.0" prefWidth="416.0" visible="false">
+         <children>
+            <Label fx:id="lblYearMonth" alignment="CENTER" prefHeight="94.0" prefWidth="416.0" text="2018/05" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

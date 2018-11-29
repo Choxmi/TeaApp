@@ -40,3 +40,42 @@
 .scroll-pane > .corner {
     -fx-background-color: black;
 }
+
+.mo-btn{
+	-fx-text-fill: #fa5f7e;
+	-fx-label-padding: 0;
+	-fx-background-color: #02030A;
+	-fx-font-style: bold;
+}
+
+.mo-btn:hover{
+	-fx-background-color: #1620A1;
+}
+
+.mo-btn:pressed{
+	-fx-background-color: #1620A1;
+}
+
+.adder {
+    -fx-graphic: url('../images/add.png');
+}
+
+.adder:hover {
+    -fx-graphic: url('../images/add_s.png');
+}
+
+.editor {
+    -fx-graphic: url('../images/edit.png');
+}
+
+.editor:hover {
+    -fx-graphic: url('../images/edit_s.png');
+}
+
+.saver {
+    -fx-graphic: url('../images/save.png');
+}
+
+.saver:hover {
+    -fx-graphic: url('../images/save_s.png');
+}
