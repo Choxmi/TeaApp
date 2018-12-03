@@ -99,9 +99,10 @@ public class DBOperations {
 
                         if (columns != null) {
                             if (columns.size() != values.size()) {
+                                System.out.printf("Size different");
                                 return null;
                             } else {
-
+                                System.out.println("QUERY");
                                 query = "INSERT INTO " + table + "(";
 
                                 for (int i = 0; i < columns.size(); i++) {

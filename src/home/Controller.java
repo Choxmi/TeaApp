@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.swing.text.html.ImageView;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -114,6 +115,75 @@ public class Controller implements Initializable {
 
     @FXML
     private ComboBox cmbTrnArea;
+
+    @FXML
+    private Button btnExpense;
+
+    @FXML
+    private Pane pnlExpenses;
+
+    @FXML
+    private RadioButton rdAdvance;
+
+    @FXML
+    private RadioButton rdPoison;
+
+    @FXML
+    private RadioButton rdDolamite;
+
+    @FXML
+    private RadioButton rdTeaPkt;
+
+    @FXML
+    private RadioButton rdFert;
+
+    @FXML
+    private RadioButton rdOther;
+
+    @FXML
+    private TextField txtExpUnitPrice;
+
+    @FXML
+    private Label lblUnitPrice;
+
+    @FXML
+    private TextField txtExpNoUnits;
+
+    @FXML
+    private Label lblNoUnits;
+
+    @FXML
+    private TextField txtExpDirPrice;
+
+    @FXML
+    private Label lblFullPrice;
+
+    @FXML
+    private TextField txtExpComments;
+
+    @FXML
+    private Label lblComments;
+
+    @FXML
+    private Label lblTotPrice;
+
+    @FXML
+    private ToggleGroup tgExpenses;
+
+    @FXML
+    private Button btnExpMonth;
+
+    @FXML
+    private TextField txtExpUserID;
+
+    @FXML
+    private Button btnExpSave;
+
+    @FXML
+    private Button btnAnnual;
+
+    @FXML
+    private Pane pnlAnnualReport;
 
     //endregion
 
@@ -281,6 +351,103 @@ public class Controller implements Initializable {
 
         //endregion
 
+        //region Expenses
+        if (actionEvent.getSource() == btnExpense) {
+            pnlExpenses.setStyle("-fx-background-color : #02030A");
+            pnlExpenses.toFront();
+            btnExpMonth.setText(String.valueOf(Calendar.DATE));
+        }
+
+        if (actionEvent.getSource() == btnExpSave) {
+
+            if(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText().equals("FER") && Integer.valueOf(txtExpNoUnits.getText()) > 25){
+                int year = Integer.valueOf(btnExpMonth.getText().split("/")[0]);
+                int month = Integer.valueOf(btnExpMonth.getText().split("/")[1]);
+                int day = Integer.valueOf(btnExpMonth.getText().split("/")[2]);
+
+                String mnth = String.valueOf(month);
+                if(month < 10){
+                    mnth = "0"+month;
+                }
+
+                int amount = Integer.valueOf(lblTotPrice.getText());
+
+                cols.clear();
+                vals.clear();
+                cols.add("date");
+                vals.add(year+"/"+mnth+"/"+day);
+                cols.add("user_id");
+                vals.add(txtExpUserID.getText());
+                cols.add("type");
+                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+                cols.add("price");
+                vals.add(""+amount/2);
+                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+                    cols.add("comment");
+                    vals.add(txtExpComments.getText());
+                }else {
+                    System.out.println("Not others");
+                }
+                insertExpenses(cols,vals);
+                month++;
+                if(month >= 12){
+                    month = 1;
+                }
+
+                mnth = String.valueOf(month);
+                if(month < 10){
+                    mnth = "0"+month;
+                }
+
+                cols.clear();
+                vals.clear();
+                cols.add("date");
+                vals.add(year+"/"+mnth+"/"+day);
+                cols.add("user_id");
+                vals.add(txtExpUserID.getText());
+                cols.add("type");
+                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+                cols.add("price");
+                vals.add(""+amount/2);
+                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+                    cols.add("comment");
+                    vals.add(txtExpComments.getText());
+                }else {
+                    System.out.println("Not others");
+                }
+                insertExpenses(cols,vals);
+            } else{
+                cols.clear();
+                vals.clear();
+                cols.add("date");
+                vals.add(btnExpMonth.getText());
+                cols.add("user_id");
+                vals.add(txtExpUserID.getText());
+                cols.add("type");
+                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+                cols.add("price");
+                vals.add(lblTotPrice.getText());
+                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+                    cols.add("comment");
+                    vals.add(txtExpComments.getText());
+                }else {
+                    System.out.println("Not others");
+                }
+                insertExpenses(cols,vals);
+            }
+
+            System.out.println(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+
+        }
+        //endregion
+
+        //region Annual Report
+        if (actionEvent.getSource() == btnAnnual) {
+            pnlAnnualReport.setStyle("-fx-background-color : #02030A");
+            pnlAnnualReport.toFront();
+        }
+        //endregion
+
         //region Signout
         if(actionEvent.getSource()==btnSignout) {
             System.out.println("Signout button");
@@ -309,6 +476,60 @@ public class Controller implements Initializable {
         //endregion
     }
 
+    //region text change handler
+    public void textChangeHandler(javafx.scene.input.KeyEvent event){
+        if(event.getSource()==txtExpNoUnits) {
+            int units = 0;
+            try{
+                units = Integer.valueOf(txtExpNoUnits.getText()) * Integer.valueOf(txtExpUnitPrice.getText());
+            }catch (Exception e){
+
+            }
+            lblTotPrice.setText(String.valueOf(units));
+        }
+
+        if(event.getSource()==txtExpDirPrice) {
+            lblTotPrice.setText(txtExpDirPrice.getText());
+        }
+    }
+    //endregion
+
+    //region radio button controller
+    public void radioHandler(ActionEvent event){
+         if(rdAdvance.isSelected()){
+             txtExpUnitPrice.setVisible(false);
+             lblUnitPrice.setVisible(false);
+             txtExpNoUnits.setVisible(false);
+             lblNoUnits.setVisible(false);
+             txtExpDirPrice.setVisible(true);
+             lblFullPrice.setVisible(true);
+             txtExpComments.setVisible(false);
+             lblComments.setVisible(false);
+             lblTotPrice.setVisible(false);
+         } else if(rdOther.isSelected()){
+             txtExpUnitPrice.setVisible(false);
+             lblUnitPrice.setVisible(false);
+             txtExpNoUnits.setVisible(false);
+             lblNoUnits.setVisible(false);
+             txtExpDirPrice.setVisible(true);
+             lblFullPrice.setVisible(true);
+             txtExpComments.setVisible(true);
+             lblComments.setVisible(true);
+             lblTotPrice.setVisible(false);
+         } else {
+             txtExpUnitPrice.setVisible(true);
+             lblUnitPrice.setVisible(true);
+             txtExpNoUnits.setVisible(true);
+             lblNoUnits.setVisible(true);
+             txtExpDirPrice.setVisible(false);
+             lblFullPrice.setVisible(false);
+             txtExpComments.setVisible(false);
+             lblComments.setVisible(false);
+             lblTotPrice.setVisible(true);
+         }
+    }
+    //endregion
+
     //region DisplayMonth
     public static void setMonth(int yr, int mnth){
         year = yr;
@@ -332,6 +553,10 @@ public class Controller implements Initializable {
 
     private void insertCustomers(List<String> cols, List<String> values){
         results = new DBOperations().executeQuery(DBOperations.TYPE_INSERT,"customer",cols,values, null, null);
+    }
+
+    private void insertExpenses(List<String> cols, List<String> values){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_INSERT,"expenses",cols,values, null, null);
     }
 
     private void fetchTransactions(List<String> cols, String where){
