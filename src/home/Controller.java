@@ -14,12 +14,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import net.sf.jasperreports.engine.JRException;
 
 import javax.swing.text.html.ImageView;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
@@ -436,6 +440,15 @@ public class Controller implements Initializable {
                 insertExpenses(cols,vals);
             }
 
+            ReportPrinter reportPrinter = new ReportPrinter();
+//            reportPrinter.print_month_report("D:/print.pdf");
+            try {
+                // --- Show Jasper Report on click-----
+                reportPrinter.printJasper();
+            } catch (ClassNotFoundException | JRException | SQLException e1) {
+                System.out.println("Here");
+                e1.printStackTrace();
+            }
             System.out.println(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
 
         }
