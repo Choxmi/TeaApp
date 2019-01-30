@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jasperreports-6.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-6.7.0/dist/jasperreports-6.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-6.7.0/dist/jasperreports-javaflow-6.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-6.7.0/dist/jasperreports-fonts-6.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

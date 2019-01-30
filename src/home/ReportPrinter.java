@@ -57,12 +57,17 @@ public class ReportPrinter {
 
     private static final long serialVersionUID = 1L;
 
-    public void printJasper() throws JRException, ClassNotFoundException, SQLException {
+    public void printJasper() {
 
-        String reportSrcFile = "D:\\EDU\\JavFX\\SampleProj\\RestaurantMgtSampleUI\\src\\data\\report.jrxml";
+        String reportSrcFile = "E:\\EDU\\JavFX\\SampleProj\\RestaurantMgtSampleUI\\src\\data\\report.jrxml";
 
         // First, compile jrxml file.
-        JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
+        JasperReport jasperReport = null;
+        try {
+            jasperReport = JasperCompileManager.compileReport(reportSrcFile);
+        }catch (Exception e){
+            System.out.println("Error is: "+e.getCause());
+        }
         // Fields for report
         HashMap<String, Object> parameters = new HashMap<String, Object>();
 
@@ -78,7 +83,12 @@ public class ReportPrinter {
         list.add(parameters);
 
         JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(list);
-        JasperPrint print = JasperFillManager.fillReport(jasperReport, null, beanColDataSource);
+        JasperPrint print = null;
+        try {
+            print = JasperFillManager.fillReport(jasperReport, null, beanColDataSource);
+        }catch (Exception e){
+            System.out.println("Error 2 is : "+e.getCause());
+        }
         JRViewer viewer = new JRViewer(print);
         viewer.setOpaque(true);
         viewer.setVisible(true);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-12-20T15:26:14 -->
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2ac93376-7509-48fa-bf60-fa53993877a5">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<queryString>
@@ -19,17 +18,15 @@
 	<field name="company" class="java.lang.String"/>
 	<field name="contact" class="java.lang.String"/>
 	<field name="receipt_for" class="java.lang.String"/>
+	<field name="Field_1" class="java.lang.String"/>
+	<field name="Field_2" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="84" splitType="Stretch">
-			<staticText>
-				<reportElement x="264" y="40" width="53" height="22" uuid="2b72f9e8-8752-4279-ab8e-68a63a3c3576"/>
-				<text><![CDATA[Receipt]]></text>
-			</staticText>
+		<band height="45" splitType="Stretch">
 			<textField>
-				<reportElement x="240" y="10" width="140" height="30" uuid="35ef1b2d-e5b9-4962-ab6d-d7714821fa16"/>
+				<reportElement x="230" y="5" width="140" height="30" uuid="35ef1b2d-e5b9-4962-ab6d-d7714821fa16"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -44,8 +41,11 @@
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="50" y="40" width="44" height="19" uuid="497fa6ea-bebf-4937-bed4-065e31135942"/>
-				<text><![CDATA[Name]]></text>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="27" width="44" height="19" uuid="497fa6ea-bebf-4937-bed4-065e31135942"/>
+				<textElement>
+					<font fontName="UN-Abhaya"/>
+				</textElement>
+				<text><![CDATA[නම]]></text>
 			</staticText>
 			<line>
 				<reportElement x="358" y="60" width="125" height="1" uuid="f0ee1c07-0fb7-4de4-981e-0e292b692d5a"/>
@@ -59,11 +59,11 @@
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="9" width="110" height="22" uuid="9d056c36-238b-4850-b2c0-2c82ba953b22"/>
+				<reportElement x="69" y="25" width="110" height="22" uuid="9d056c36-238b-4850-b2c0-2c82ba953b22"/>
 				<textFieldExpression><![CDATA[$F{receipt_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="20" y="8" width="49" height="12" uuid="b6801bc9-8d09-46bb-aa71-832463d518bd"/>
+				<reportElement x="153" y="7" width="49" height="12" uuid="b6801bc9-8d09-46bb-aa71-832463d518bd"/>
 				<text><![CDATA[Receipt No]]></text>
 			</staticText>
 			<rectangle>

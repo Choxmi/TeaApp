@@ -364,91 +364,85 @@ public class Controller implements Initializable {
 
         if (actionEvent.getSource() == btnExpSave) {
 
-            if(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText().equals("FER") && Integer.valueOf(txtExpNoUnits.getText()) > 25){
-                int year = Integer.valueOf(btnExpMonth.getText().split("/")[0]);
-                int month = Integer.valueOf(btnExpMonth.getText().split("/")[1]);
-                int day = Integer.valueOf(btnExpMonth.getText().split("/")[2]);
-
-                String mnth = String.valueOf(month);
-                if(month < 10){
-                    mnth = "0"+month;
-                }
-
-                int amount = Integer.valueOf(lblTotPrice.getText());
-
-                cols.clear();
-                vals.clear();
-                cols.add("date");
-                vals.add(year+"/"+mnth+"/"+day);
-                cols.add("user_id");
-                vals.add(txtExpUserID.getText());
-                cols.add("type");
-                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
-                cols.add("price");
-                vals.add(""+amount/2);
-                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
-                    cols.add("comment");
-                    vals.add(txtExpComments.getText());
-                }else {
-                    System.out.println("Not others");
-                }
-                insertExpenses(cols,vals);
-                month++;
-                if(month >= 12){
-                    month = 1;
-                }
-
-                mnth = String.valueOf(month);
-                if(month < 10){
-                    mnth = "0"+month;
-                }
-
-                cols.clear();
-                vals.clear();
-                cols.add("date");
-                vals.add(year+"/"+mnth+"/"+day);
-                cols.add("user_id");
-                vals.add(txtExpUserID.getText());
-                cols.add("type");
-                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
-                cols.add("price");
-                vals.add(""+amount/2);
-                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
-                    cols.add("comment");
-                    vals.add(txtExpComments.getText());
-                }else {
-                    System.out.println("Not others");
-                }
-                insertExpenses(cols,vals);
-            } else{
-                cols.clear();
-                vals.clear();
-                cols.add("date");
-                vals.add(btnExpMonth.getText());
-                cols.add("user_id");
-                vals.add(txtExpUserID.getText());
-                cols.add("type");
-                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
-                cols.add("price");
-                vals.add(lblTotPrice.getText());
-                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
-                    cols.add("comment");
-                    vals.add(txtExpComments.getText());
-                }else {
-                    System.out.println("Not others");
-                }
-                insertExpenses(cols,vals);
-            }
+//            if(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText().equals("FER") && Integer.valueOf(txtExpNoUnits.getText()) > 25){
+//                int year = Integer.valueOf(btnExpMonth.getText().split("/")[0]);
+//                int month = Integer.valueOf(btnExpMonth.getText().split("/")[1]);
+//                int day = Integer.valueOf(btnExpMonth.getText().split("/")[2]);
+//
+//                String mnth = String.valueOf(month);
+//                if(month < 10){
+//                    mnth = "0"+month;
+//                }
+//
+//                int amount = Integer.valueOf(lblTotPrice.getText());
+//
+//                cols.clear();
+//                vals.clear();
+//                cols.add("date");
+//                vals.add(year+"/"+mnth+"/"+day);
+//                cols.add("user_id");
+//                vals.add(txtExpUserID.getText());
+//                cols.add("type");
+//                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+//                cols.add("price");
+//                vals.add(""+amount/2);
+//                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+//                    cols.add("comment");
+//                    vals.add(txtExpComments.getText());
+//                }else {
+//                    System.out.println("Not others");
+//                }
+//                insertExpenses(cols,vals);
+//                month++;
+//                if(month >= 12){
+//                    month = 1;
+//                }
+//
+//                mnth = String.valueOf(month);
+//                if(month < 10){
+//                    mnth = "0"+month;
+//                }
+//
+//                cols.clear();
+//                vals.clear();
+//                cols.add("date");
+//                vals.add(year+"/"+mnth+"/"+day);
+//                cols.add("user_id");
+//                vals.add(txtExpUserID.getText());
+//                cols.add("type");
+//                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+//                cols.add("price");
+//                vals.add(""+amount/2);
+//                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+//                    cols.add("comment");
+//                    vals.add(txtExpComments.getText());
+//                }else {
+//                    System.out.println("Not others");
+//                }
+//                insertExpenses(cols,vals);
+//            } else{
+//                cols.clear();
+//                vals.clear();
+//                cols.add("date");
+//                vals.add(btnExpMonth.getText());
+//                cols.add("user_id");
+//                vals.add(txtExpUserID.getText());
+//                cols.add("type");
+//                vals.add(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
+//                cols.add("price");
+//                vals.add(lblTotPrice.getText());
+//                if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+//                    cols.add("comment");
+//                    vals.add(txtExpComments.getText());
+//                }else {
+//                    System.out.println("Not others");
+//                }
+//                insertExpenses(cols,vals);
+//            }
 
             ReportPrinter reportPrinter = new ReportPrinter();
 //            reportPrinter.print_month_report("D:/print.pdf");
-            try {
-                // --- Show Jasper Report on click-----
-                reportPrinter.printJasper();
-            } catch (ClassNotFoundException | JRException | SQLException e1) {
-                System.out.println("Here");
-                e1.printStackTrace();
-            }
+            reportPrinter.printJasper();
             System.out.println(((RadioButton)tgExpenses.getSelectedToggle()).getAccessibleText());
 
         }

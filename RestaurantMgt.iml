@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.0" level="project" />
+    <orderEntry type="library" exported="" name="io.github.typhon0:AnimateFX:1.2.0" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -639,5 +639,19 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="joda-time:joda-time:2.9.4" level="project" />
+    <orderEntry type="library" exported="" name="mysql:mysql-connector-java:5.1.6" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-5.1.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
+    <orderEntry type="library" name="commons-logging:commons-logging:1.1.1" level="project" />
+    <orderEntry type="library" name="jasperreports-6.7.0" level="project" />
+    <orderEntry type="library" name="ant-1.7.1" level="project" />
   </component>
 </module>

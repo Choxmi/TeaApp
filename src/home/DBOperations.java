@@ -20,7 +20,7 @@ public class DBOperations {
     public static final String OP_SUCCESS = "SUCCESS";
     public static final String OP_FAILED = "FAILED";
 
-    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost/tea_transport";
 
     private boolean getConnectionStatus(){
@@ -194,7 +194,7 @@ public class DBOperations {
 
     public static void startMysql(){
         try {
-            Runtime.getRuntime().exec("D:\\Softwares\\Installations\\Xampp\\mysql\\bin\\mysqld.exe");
+            Runtime.getRuntime().exec("E:\\Softwares\\Installations\\Xampp\\mysql\\bin\\mysqld.exe");
             mysql_status = true;
         } catch (IOException e) {
             mysql_status = false;

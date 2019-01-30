@@ -11,8 +11,13 @@ public class Main extends Application {
     private double x, y;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+    public void start(Stage primaryStage) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        }catch (Exception e){
+            System.out.println("Error is : "+e.getCause());
+        }
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);

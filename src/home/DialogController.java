@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class DialogController implements Initializable {
 
     @FXML
-    private javafx.scene.control.Button btnExit;
+    private javafx.scene.control.Button dNegative;
 
     @FXML
     private javafx.scene.control.Button btnBack;
@@ -23,7 +23,7 @@ public class DialogController implements Initializable {
     }
 
     public void handleClicks(ActionEvent event){
-        if(event.getSource() == btnExit){
+        if(event.getSource() == dNegative){
             DBOperations.stopMysql();
             Platform.exit();
         }

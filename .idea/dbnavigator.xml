@@ -27,7 +27,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="f752a02f-75aa-415a-bb6a-256da81e189a">
-      <console name="TeaDB" type="STANDARD" />
+      <console name="TeaDB" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -62,7 +62,7 @@
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="5.5" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -88,6 +88,12 @@
           <key-file value="" />
           <key-passphrase value="" />
         </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
         <details>
           <charset value="UTF-8" />
           <session-management value="true" />
