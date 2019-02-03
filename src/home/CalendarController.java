@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class CalendarController implements Initializable {
@@ -28,7 +29,7 @@ public class CalendarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        lblYear.setText(""+Calendar.getInstance().get(Calendar.YEAR));
     }
 
     public void handleClicks(ActionEvent event){

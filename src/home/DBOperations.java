@@ -160,6 +160,27 @@ public class DBOperations {
                     case TYPE_DELETE:
                         break;
                     case TYPE_UPDATE:
+                        if (columns != null) {
+                            query = "UPDATE " + table + " SET ";
+                            for (int i = 0; i < columns.size(); i++) {
+                                if (i < (columns.size() - 1)) {
+                                    query += " " + columns.get(i) + " = '"+ values.get(i) +"',";
+                                } else {
+                                    query += " " + columns.get(i) + " = '"+ values.get(i) + "'";
+                                }
+                            }
+                            if (where != null) {
+                                query += " WHERE 1=1 AND " + where;
+                            }
+                            System.out.println(query);
+                            if (stmnt.execute(query)) {
+                                inner.add(OP_SUCCESS);
+                                full.add(inner);
+                            } else {
+                                inner.add(OP_FAILED);
+                                full.add(inner);
+                            }
+                        }
                         break;
                     default:
                         break;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -127,7 +128,7 @@
       </VBox>
       <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlTransaction" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="pnlTransaction" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <Label fx:id="txtTrnCusName" layoutX="302.0" layoutY="153.0" text="G.W.C. Sathsara" textAlignment="CENTER" textFill="#ff0043">
                      <font>
@@ -151,7 +152,7 @@
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button layoutX="39.0" layoutY="171.0" mnemonicParsing="false" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
+                  <Button fx:id="btnTrnPrev" layoutX="39.0" layoutY="171.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="56.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -160,7 +161,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="690.0" layoutY="162.0" mnemonicParsing="false" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
+                  <Button fx:id="btnTrnNxt" layoutX="690.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="356.0" prefWidth="52.0" style="-fx-background-color: null;">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -169,18 +170,18 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label fx:id="txtTrnCusID" layoutX="384.0" layoutY="132.0" text="01" textFill="#00b2ff">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="txtTrnDate" alignment="CENTER" layoutX="296.0" layoutY="54.0" prefHeight="60.0" prefWidth="198.0" promptText="Gross Weight" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="2018/05/12">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
+                  <TextField fx:id="txtTrnCusID" alignment="CENTER" layoutX="19.0" layoutY="100.0" prefHeight="73.0" prefWidth="753.0" promptText="ID" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
                </children></Pane>
-            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
+            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" visible="false">
                <children>
                   <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <Label layoutX="55.0" layoutY="36.0" text="A.B.C. Silva" textFill="#e7e5e5">
@@ -222,7 +223,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="92.0" prefWidth="170.0">
                            <children>
-                              <Button id="btnMonth" fx:id="btnMonth" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
+                              <Button id="btnMonth" fx:id="btnOverviewMonth" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -283,49 +284,49 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="367.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" style="-fx-radius: 50;">
+                  <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="373.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" style="-fx-radius: 50;">
                      <image>
                         <Image url="@../images/user.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="387.0" layoutY="160.0" text="NIC" textFill="WHITE" />
-                  <Label layoutX="381.0" layoutY="220.0" text="Name" textFill="WHITE" />
-                  <Label layoutX="367.0" layoutY="281.0" text="Mobile No." textFill="WHITE" />
-                  <Label layoutX="364.0" layoutY="338.0" text="Account No." textFill="WHITE" />
-                  <Label layoutX="375.0" layoutY="398.0" text="Address" textFill="WHITE" />
-                  <TextField fx:id="txtCusNIC" alignment="CENTER" layoutX="199.0" layoutY="153.0" prefHeight="67.0" prefWidth="397.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="933631834V">
+                  <Label layoutX="392.0" layoutY="204.0" text="NIC" textFill="WHITE" />
+                  <Label layoutX="386.0" layoutY="264.0" text="Name" textFill="WHITE" />
+                  <Label layoutX="372.0" layoutY="325.0" text="Mobile No." textFill="WHITE" />
+                  <Label layoutX="369.0" layoutY="382.0" text="Account No." textFill="WHITE" />
+                  <Label layoutX="380.0" layoutY="442.0" text="Address" textFill="WHITE" />
+                  <TextField fx:id="txtCusNIC" alignment="CENTER" layoutX="205.0" layoutY="204.0" prefHeight="67.0" prefWidth="397.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="933631834V">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtCusName" alignment="CENTER" layoutX="21.0" layoutY="213.0" prefHeight="75.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="G.W. Choxmi Sathsara">
+                  <TextField fx:id="txtCusName" alignment="CENTER" layoutX="26.0" layoutY="257.0" prefHeight="75.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="G.W. Choxmi Sathsara">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtCusMobile" alignment="CENTER" layoutX="20.0" layoutY="270.0" prefHeight="85.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="0717753438">
+                  <TextField fx:id="txtCusMobile" alignment="CENTER" layoutX="25.0" layoutY="314.0" prefHeight="85.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="0717753438">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtCusAccount" alignment="CENTER" layoutX="20.0" layoutY="338.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="1024000000000000">
+                  <TextField fx:id="txtCusAccount" alignment="CENTER" layoutX="25.0" layoutY="382.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="1024000000000000">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtCusAddress" alignment="CENTER" layoutX="21.0" layoutY="398.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="H/18, Punchimadawala,Kithulgala">
+                  <TextField fx:id="txtCusAddress" alignment="CENTER" layoutX="26.0" layoutY="442.0" prefHeight="60.0" prefWidth="753.0" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;" text="H/18, Punchimadawala,Kithulgala">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="738.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="adder" stylesheets="@style.css">
+                  <Button fx:id="btnCusNew" layoutX="738.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="adder" stylesheets="@style.css">
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="698.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="editor" stylesheets="@style.css">
+                  <Button fx:id="btnCusEdit" layoutX="698.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="36.0" style="-fx-background-color: null;" styleClass="editor" stylesheets="@style.css">
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -335,12 +336,21 @@
                         <ImageView fitHeight="34.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <TextField layoutX="41.0" layoutY="32.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="203.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="txtCusSearch" layoutX="41.0" layoutY="32.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <ImageView fx:id="btnCusSearch" fitHeight="17.0" fitWidth="16.0" layoutX="191.0" layoutY="40.0" onMouseClicked="#performMouseClick" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
                   </ImageView>
+                  <Label fx:id="lblCusID" layoutX="394.0" layoutY="146.0" text="ID" textFill="WHITE" />
+                  <Label fx:id="txtCusID" layoutX="396.0" layoutY="167.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
                </children></Pane>
             <Pane fx:id="pnlPayslips" prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -362,7 +372,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="btnMonth" fx:id="btnMonth" alignment="CENTER" graphicTextGap="22.0" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
+                  <Button id="btnMonth" fx:id="btnPayMonth" alignment="CENTER" graphicTextGap="22.0" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12" textAlignment="RIGHT">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -372,79 +382,79 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTrnGrossWeight" alignment="CENTER" layoutX="49.0" layoutY="79.0" prefHeight="66.0" prefWidth="161.0" promptText="Price" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayPrice" alignment="CENTER" layoutX="49.0" layoutY="79.0" prefHeight="66.0" prefWidth="161.0" promptText="Price" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
                   <Label layoutX="107.0" layoutY="137.0" text="Price/Kg" textFill="WHITE" />
-                  <TextField fx:id="txtTrnGrossWeight1" alignment="CENTER" layoutX="315.0" layoutY="73.0" prefHeight="66.0" prefWidth="161.0" promptText="Transport" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayTransport" alignment="CENTER" layoutX="315.0" layoutY="73.0" prefHeight="66.0" prefWidth="161.0" promptText="Transport" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="360.0" layoutY="135.0" text="Transport (%)" textFill="WHITE" />
-                  <TextField fx:id="txtTrnGrossWeight11" alignment="CENTER" layoutX="584.0" layoutY="69.0" prefHeight="66.0" prefWidth="161.0" promptText="Core Leaf" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <Label layoutX="353.0" layoutY="135.0" text="Transport/Kg" textFill="WHITE" />
+                  <TextField fx:id="txtPayCoreLeaf" alignment="CENTER" layoutX="584.0" layoutY="69.0" prefHeight="66.0" prefWidth="161.0" promptText="Core Leaf" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="630.0" layoutY="127.0" text="Core Leaf/Kg" textFill="WHITE" />
-                  <TextField fx:id="txtTrnGrossWeight2" alignment="CENTER" layoutX="307.0" layoutY="159.0" prefHeight="38.0" prefWidth="161.0" promptText="User ID" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <Label layoutX="630.0" layoutY="127.0" text="Core Leaf (%)" textFill="WHITE" />
+                  <TextField fx:id="txtPayUser" alignment="CENTER" layoutX="314.0" layoutY="158.0" prefHeight="38.0" prefWidth="161.0" promptText="User ID" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
                   <Label layoutX="370.0" layoutY="198.0" text="User ID" textFill="WHITE" />
-                  <Label layoutX="223.0" layoutY="317.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayAdvance" layoutX="222.0" layoutY="323.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="106.0" layoutY="325.0" text="අත්තිකාරම් :" textFill="#ababab" />
-                  <Label layoutX="223.0" layoutY="348.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayPoison" layoutX="222.0" layoutY="354.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="106.0" layoutY="356.0" text="වල් නාශක :" textFill="#ababab" />
-                  <Label layoutX="435.0" layoutY="312.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayDol" layoutX="442.0" layoutY="321.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="360.0" layoutY="319.0" text="ඩොලමයිට් :" textFill="#ababab" />
-                  <Label layoutX="435.0" layoutY="343.0" text="0" textFill="WHITE">
+                  <Label layoutX="343.0" layoutY="323.0" text="ඩොලමයිට් :" textFill="#ababab" />
+                  <Label fx:id="lblPayTea" layoutX="442.0" layoutY="352.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="355.0" layoutY="353.0" text="තේ කොළ :" textFill="#ababab" />
-                  <Label layoutX="662.0" layoutY="310.0" text="0" textFill="WHITE">
+                  <Label layoutX="338.0" layoutY="357.0" text="තේ කොළ :" textFill="#ababab" />
+                  <Label fx:id="lblPayFert" layoutX="661.0" layoutY="316.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="555.0" layoutY="319.0" text="පොහොර :" textFill="#ababab" />
-                  <Label layoutX="662.0" layoutY="341.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayLoan" layoutX="661.0" layoutY="347.0" text="0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="555.0" layoutY="348.0" text="හිඟ මුදල් :" textFill="#ababab" />
-                  <Label layoutX="223.0" layoutY="276.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayTotalGross" layoutX="222.0" layoutY="282.0" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
                   <Label layoutX="106.0" layoutY="284.0" text="මුළු මුදල :" textFill="#ababab" />
-                  <Label layoutX="435.0" layoutY="271.0" text="0" textFill="WHITE">
+                  <Label fx:id="lblPayTransport" layoutX="442.0" layoutY="280.0" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Label layoutX="328.0" layoutY="281.0" text="ප්‍රවාහන ගාස්තු :" textFill="#ababab" />
-                  <Label layoutX="662.0" layoutY="269.0" text="0" textFill="WHITE">
+                  <Label layoutX="311.0" layoutY="285.0" text="ප්‍රවාහන ගාස්තු :" textFill="#ababab" />
+                  <Label fx:id="lblPayCore" layoutX="661.0" layoutY="275.0" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
@@ -452,40 +462,40 @@
                   <Label layoutX="555.0" layoutY="281.0" text="මූලික දළු :" textFill="#ababab" />
                   <Label layoutX="102.0" layoutY="384.0" text="වෙනත් එකතු කිරීම් :" textFill="#ababab" />
                   <Label layoutX="415.0" layoutY="384.0" text="වෙනත් අඩු කිරීම් :" textFill="#ababab" />
-                  <TextField fx:id="txtTrnGrossWeight12" alignment="CENTER" layoutX="301.0" layoutY="378.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayOtherRed" alignment="CENTER" layoutX="311.0" layoutY="380.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtTrnGrossWeight121" alignment="CENTER" layoutX="586.0" layoutY="378.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayInc" alignment="CENTER" layoutX="610.0" layoutY="380.0" prefHeight="30.0" prefWidth="74.0" promptText="Comment" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </TextField>
                   <Label layoutX="338.0" layoutY="478.0" text="ගෙවිය යුතු මුදල(Rs.)" textFill="#ababab" />
-                  <TextField fx:id="txtTrnGrossWeight122" alignment="CENTER" layoutX="236.0" layoutY="378.0" prefHeight="30.0" prefWidth="74.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayNetPay" alignment="CENTER" layoutX="246.0" layoutY="380.0" prefHeight="30.0" prefWidth="74.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtTrnGrossWeight1211" alignment="CENTER" layoutX="521.0" layoutY="378.0" prefHeight="30.0" prefWidth="69.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
+                  <TextField fx:id="txtPayAmount" alignment="CENTER" layoutX="545.0" layoutY="380.0" prefHeight="30.0" prefWidth="69.0" promptText="Amount" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="373.0" layoutY="516.0" mnemonicParsing="false" text="Save" />
-                  <Label alignment="CENTER" layoutX="168.0" layoutY="420.0" prefHeight="58.0" prefWidth="457.0" text="25,53000" textAlignment="RIGHT" textFill="WHITE">
+                  <Button fx:id="btnPayPrint" layoutX="373.0" layoutY="516.0" mnemonicParsing="false" text="Update" />
+                  <Label fx:id="lblPayTotalNet" alignment="CENTER" layoutX="168.0" layoutY="420.0" prefHeight="58.0" prefWidth="457.0" text="25,53000" textAlignment="RIGHT" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="40.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="27.0" prefWidth="684.0" text="User Name" textFill="#41adff">
+                  <Label fx:id="lblPayUserName" alignment="CENTER" layoutX="52.0" layoutY="230.0" prefHeight="27.0" prefWidth="684.0" text="User Name" textFill="#41adff">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children></Pane>
-            <Pane fx:id="pnlExpenses" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="pnlExpenses" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <RadioButton fx:id="rdAdvance" accessibleText="ADV" layoutX="109.0" layoutY="199.0" mnemonicParsing="false" onAction="#radioHandler" prefHeight="21.0" prefWidth="115.0" selected="true" text="අත්තිකාරම්" textFill="WHITE">
                      <font>
@@ -519,11 +529,11 @@
                         <Font size="15.0" />
                      </font>
                   </RadioButton>
-                  <Button id="btnMonth" fx:id="btnExpMonth" alignment="CENTER" graphicTextGap="22.0" layoutX="271.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12/15" textAlignment="RIGHT">
+                  <TextField id="btnMonth" fx:id="btnExpMonth" alignment="CENTER" layoutX="271.0" layoutY="25.0" onAction="#handleClicks" prefHeight="10.0" prefWidth="252.0" style=": ;" styleClass="mo-btn" stylesheets="@style.css" text="2018/12/15">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
-                  </Button>
+                  </TextField>
                   <TextField fx:id="txtExpUserID" alignment="CENTER" layoutX="316.0" layoutY="80.0" prefHeight="38.0" prefWidth="161.0" promptText="User ID" style="-fx-background-color: null; -fx-text-fill: #FFFFFF;">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -567,7 +577,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlAnnualReport" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="pnlAnnualReport" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <ScrollPane layoutX="32.0" layoutY="90.0" prefHeight="479.0" prefWidth="735.0" stylesheets="@style.css">
                      <content>
