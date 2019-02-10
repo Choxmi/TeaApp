@@ -51,9 +51,6 @@ public class Controller implements Initializable {
     private Button btnClose;
 
     @FXML
-    private Button btnPayslips;
-
-    @FXML
     private Button btnPackages;
 
     @FXML
@@ -75,16 +72,34 @@ public class Controller implements Initializable {
     private Pane pnlOverview;
 
     @FXML
+    private Button btnPayslips;
+
+    @FXML
     private Pane pnlPayslips;
 
     @FXML
     private Button btnPayMonth;
 
     @FXML
+    private TextField txtPayPrice;
+
+    @FXML
+    private TextField txtPayTransport;
+
+    @FXML
+    private TextField txtPayCoreLeaf;
+
+    @FXML
     private TextField txtPayUser;
 
     @FXML
     private Label lblPayUserName;
+
+    @FXML
+    private Pane pnlPayTempCover;
+
+    @FXML
+    private Button btnMonthlyRatesSave;
 
     @FXML
     private ImageView imgProfile;
@@ -222,7 +237,9 @@ public class Controller implements Initializable {
 
     public static int year,month,date;
 
-    private List<List<String>> results;
+    private boolean s1,s2 = false;
+
+    private List<List<String>> results,set1,set2;
     private List<String> cols, vals;
 
     private Button clickedButton;
@@ -489,6 +506,29 @@ public class Controller implements Initializable {
                 } else {
                     insertTransactions(cols, vals);
                 }
+
+                if(!txtTrnAdvance.getText().equals("")){
+                    cols.clear();
+                    vals.clear();
+                    cols.add("date");
+                    vals.add(txtTrnDate.getText());
+                    cols.add("user_id");
+                    vals.add(txtTrnCusID.getText());
+                    cols.add("type");
+                    vals.add("ADV");
+                    cols.add("price");
+                    vals.add(txtTrnAdvance.getText());
+                    if(rdOther ==((RadioButton)tgExpenses.getSelectedToggle())){
+                        cols.add("comment");
+                        vals.add(txtExpComments.getText());
+                    }else {
+                        System.out.println("Not others");
+                    }
+                    insertExpenses(cols,vals);
+                } else {
+                    System.out.println("ADV|"+txtTrnAdvance.getText()+"|");
+                }
+
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 Date date = new Date();
                 txtTrnDate.setText(dateFormat.format(date));
@@ -607,7 +647,16 @@ public class Controller implements Initializable {
             pnlPayslips.toFront();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
             Date date = new Date();
-            btnPayMonth.setText(dateFormat.format(date));
+            String fDate = dateFormat.format(date);
+            btnPayMonth.setText(fDate);
+
+            if(checkRatesAvailability(fDate.split("/")[0],fDate.split("/")[1])){
+                System.out.println(results);
+                txtPayPrice.setText(results.get(0).get(2));
+                txtPayTransport.setText(results.get(0).get(3));
+                txtPayCoreLeaf.setText(results.get(0).get(4));
+                pnlPayTempCover.setVisible(false);
+            }
 
             txtPayUser.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
@@ -618,10 +667,15 @@ public class Controller implements Initializable {
                         fetchCustomers(null,where);
                         if(results.size()==0){
                             openDialog(NOT_FOUND_MSG,event,"User");
+                        }else {
+                            System.out.println(results);
+                            txtPayUser.setText(results.get(0).get(0));
+                            lblPayUserName.setText(results.get(0).get(2));
+
+                            String wh = "month =" + btnPayMonth.getText().split("/")[0] + "  AND year = "+btnPayMonth.getText().split("/")[0]+" AND user_id = " + txtPayUser.getText();
+                            fetchMonthyOverview(wh);
                         }
-                        System.out.println(results);
-                        txtPayUser.setText(results.get(0).get(0));
-                        lblPayUserName.setText(results.get(0).get(2));
+
                     }
                 }
             });
@@ -632,6 +686,31 @@ public class Controller implements Initializable {
             System.out.println("Show month");
             clickedButton = btnPayMonth;
             showMonthPicker(actionEvent);
+        }
+
+        if(actionEvent.getSource()==btnMonthlyRatesSave){
+            cols.clear();
+            vals.clear();
+
+            if(!txtPayPrice.getText().equals("") && !txtPayTransport.getText().equals("") && !txtPayCoreLeaf.getText().equals("")) {
+                cols.add("year");
+                cols.add("month");
+                cols.add("price");
+                cols.add("transport");
+                cols.add("core_leaf");
+
+                vals.add(btnPayMonth.getText().split("/")[0]);
+                vals.add(btnPayMonth.getText().split("/")[1]);
+                vals.add(txtPayPrice.getText());
+                vals.add(txtPayTransport.getText());
+                vals.add(txtPayCoreLeaf.getText());
+            }
+
+            insertUpdateMonthlyRates(cols,vals,"", 2);
+
+            generateMonthlyDetails(btnPayMonth.getText().split("/")[0],btnPayMonth.getText().split("/")[1]);
+
+            pnlPayTempCover.setVisible(false);
         }
         //endregion
 
@@ -772,6 +851,12 @@ public class Controller implements Initializable {
         }else {
             clickedButton.setText(year + "/" + month);
         }
+        if(checkRatesAvailability(String.valueOf(year),String.valueOf(month))){
+            txtPayPrice.setText(results.get(0).get(2));
+            txtPayTransport.setText(results.get(0).get(3));
+            txtPayCoreLeaf.setText(results.get(0).get(4));
+            pnlPayTempCover.setVisible(false);
+        }
     }
     //endregion
 
@@ -793,12 +878,48 @@ public class Controller implements Initializable {
     }
 
     private void fetchTransactions(List<String> cols, String where){
-        String join = " INNER JOIN customer ON transactions.customer_id = customer.id ";
-        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"transactions",cols, null,join, where);
+        String join = " INNER JOIN customer ON t.customer_id = customer.id ";
+        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"transactions t",cols, null,join, where);
+        s1 = true;
     }
 
     private void insertTransactions(List<String> cols, List<String> values){
         results = new DBOperations().executeQuery(DBOperations.TYPE_INSERT,"transactions",cols,values, null,null);
+    }
+
+    private void fetchMonthlyRates(List<String> cols, String where){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"monthly_rates",cols, null,null, where);
+    }
+
+    private void insertUpdateMonthlyRates(List<String> cols, List<String> values, String where, int primaries){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_INSERT_UPDATE,"monthly_rates",cols, values,null, where,primaries);
+    }
+
+    private boolean checkRatesAvailability(String year, String month){
+        fetchMonthlyRates(null,"year = '"+year+"' AND month = '"+month+"'");
+        if(results.size()>0){
+            return true;
+        }
+        return false;
+    }
+
+    private void fetchTransactionSum(List<String> cols, String where){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"transactions t",cols, null,null, where);
+        set1 = results;
+    }
+
+    private void fetchExpenses(List<String> cols, String where){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"expenses e",cols, null, null, where);
+        set2 = results;
+    }
+
+    private void insertOverview(List<String> cols, List<String> values){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_INSERT,"monthly_overview",cols,values, null,null);
+    }
+
+    private void fetchMonthyOverview(String where){
+        results = new DBOperations().executeQuery(DBOperations.TYPE_SELECT,"monthly_overview",null, null, null, where);
+        set2 = results;
     }
     //endregion
 
@@ -818,5 +939,90 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void generateMonthlyDetails(String year, String month){
+        cols.clear();
+
+        cols.add("customer_id");
+        cols.add("SUM(weight) as weight");
+
+        String where = "MONTH(t.date) = "+month+" AND YEAR(t.date) = "+year+" GROUP BY t.customer_id ORDER BY t.customer_id ASC";
+
+        fetchTransactionSum(cols,where);
+
+        cols.clear();
+
+        cols.add("user_id");
+        cols.add("sum(price) as price");
+        cols.add("type");
+
+        where = "MONTH(e.date) = "+month+" AND YEAR(e.date) = "+year+" GROUP BY e.user_id, e.type ORDER BY e.user_id ASC";
+
+        fetchExpenses(cols,where);
+        System.out.println("SET1 : "+set1);
+        System.out.printf("SET2 : "+set2);
+        int expenses = 0;
+        boolean init = false;
+        for(int i = 0;i < set1.size();i++){
+            cols.clear();
+            vals.clear();
+            cols.add("year");
+            vals.add(year);
+            cols.add("month");
+            vals.add(month);
+            cols.add("user_id");
+            vals.add(set1.get(i).get(0));
+            cols.add("kilo");
+            vals.add(set1.get(i).get(1));
+            System.out.println(set2.get(expenses).get(0)+" VS "+set1.get(i).get(0));
+            init = true;
+            while (init) {
+                if(!set2.get(expenses).get(0).equals(set1.get(i).get(0)) || expenses >= set2.size()) {
+                    break;
+                }
+                System.out.println("IN : "+set2.get(expenses).get(2));
+                switch (set2.get(expenses).get(2)) {
+                    case "ADV":
+                        cols.add("adv");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "FER":
+                        cols.add("fer");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "POI":
+                        cols.add("poison");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "OTH":
+                        cols.add("dec_other");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "DOL":
+                        cols.add("dolamite");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "TEA":
+                        cols.add("tea");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    case "TRA":
+                        cols.add("transport");
+                        vals.add(set2.get(expenses).get(1));
+                        break;
+                    default:
+                        break;
+                }
+                expenses++;
+                if(expenses >= set2.size()){
+                    init = false;
+                }
+            }
+
+        insertOverview(cols,vals);
+
+        }
+
     }
 }

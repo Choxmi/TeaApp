@@ -17,6 +17,7 @@ public class DBOperations {
     public static final int TYPE_INSERT = 1;
     public static final int TYPE_UPDATE = 2;
     public static final int TYPE_DELETE = 3;
+    public static final int TYPE_INSERT_UPDATE = 4;
     public static final String OP_SUCCESS = "SUCCESS";
     public static final String OP_FAILED = "FAILED";
 
@@ -43,7 +44,7 @@ public class DBOperations {
         }
     }
 
-    public List<List<String>> executeQuery(int type, String table, List<String> columns, List<String> values, String join, String where){
+    public List<List<String>> executeQuery(int type, String table, List<String> columns, List<String> values, String join, String where, int... primaries){
         List<List<String>> full = new ArrayList<>();
         List<String> inner = new ArrayList<>();
         ResultSet result = null;
@@ -56,7 +57,6 @@ public class DBOperations {
 
                 switch (type) {
                     case TYPE_SELECT:
-
                         if (columns != null) {
                             query = "SELECT ";
                             for (int col = 0; col < columns.size(); col++) {
@@ -78,22 +78,19 @@ public class DBOperations {
                         if (where != null) {
                             query += " WHERE 1=1 AND " + where;
                         }
-
-                        System.out.println("QUERY : "+query);
-
                         result = stmnt.executeQuery(query);
+
                         ResultSetMetaData meta = result.getMetaData();
                         int columnsNumber = meta.getColumnCount();
-
+                        full.clear();
                         while (result.next()) {
-                            inner.clear();
-                            for (int i = 1; i < columnsNumber; i++) {
-                                System.out.println(" Col Num : "+columnsNumber+" I : "+i);
+                            inner = new ArrayList<>();
+                            for (int i = 1; i <= columnsNumber; i++) {
                                 inner.add(result.getString(i));
+                                System.out.print(result.getString(i));
                             }
                             full.add(inner);
                         }
-
                         break;
                     case TYPE_INSERT:
 
@@ -182,6 +179,46 @@ public class DBOperations {
                             }
                         }
                         break;
+                    case TYPE_INSERT_UPDATE:
+                        if (columns != null) {
+                            query = "INSERT INTO " + table + "(";
+                            for (int i = 0; i < columns.size(); i++) {
+                                if (i < (columns.size() - 1)) {
+                                    query += " " + columns.get(i) + ",";
+                                } else {
+                                    query += " " + columns.get(i);
+                                }
+                            }
+
+                            query += ") VALUES (";
+
+                            for (int i = 0; i < values.size(); i++) {
+                                if (i < (values.size() - 1)) {
+                                    query += " '" + values.get(i) + "',";
+                                } else {
+                                    query += " '" + values.get(i) + "'";
+                                }
+                            }
+
+                            query += ") ON DUPLICATE KEY UPDATE ";
+                            for (int i = primaries[0]; i < columns.size(); i++) {
+                                if (i < (columns.size() - 1)) {
+                                    query += " " + columns.get(i) + " = '"+ values.get(i) +"',";
+                                } else {
+                                    query += " " + columns.get(i) + " = '"+ values.get(i) + "'";
+                                }
+                            }
+
+                            System.out.println(query);
+                            if (stmnt.execute(query)) {
+                                inner.add(OP_SUCCESS);
+                                full.add(inner);
+                            } else {
+                                inner.add(OP_FAILED);
+                                full.add(inner);
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -190,6 +227,7 @@ public class DBOperations {
                 e.printStackTrace();
             }
         }
+        System.out.println("RET => "+full);
         return full;
     }
 
